@@ -37,5 +37,7 @@ Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function 
 Route::get('/logout', [AdminController::class,'destroy'])->name('admin.logout');
 Route::get('admin/profile',[AdminProfileController::class, 'adminProfile'])->name('admin.profile');
 Route::get('admin/profile/edit',[AdminProfileController::class, 'adminProfileEdit'])->name('admin.profile_edit');
-Route::post('admin/profile/store',[AdminProfileController::class, 'adminProfileStore'])->name('admin.profile.store');
+Route::get('admin/profile/store',[AdminProfileController::class, 'adminProfileStore'])->name('admin.profile.store');
+Route::get('admin/change/password',[AdminProfileController::class, 'adminChangePassword'])->name('admin.change_password');
+Route::post('admin/change/updatePassword',[AdminProfileController::class, 'adminChangeUddatePassword'])->name('admin.change_password');
 
