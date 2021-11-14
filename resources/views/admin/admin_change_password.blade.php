@@ -15,7 +15,7 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col">
-                            <form  method="POST" action="{{route('admin.change_password')}}">
+                            <form  method="POST" action="{{route('admin.store.change_password')}}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12">

@@ -1,15 +1,33 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('frontend.main_master')
+@section('main')
+<div class="body-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="{{ !empty($adminData->profile_photo_path)?url('uplaod/admin_images/'.$adminData->profile_photo_path):'https://cdn.pixabay.com/photo/2020/04/19/11/52/drink-5063295__480.jpg' }}" alt="" class="card-img-top" style="border-radius: 50%" height="100%" width="100%"><br><br>
+                <ul class="list-group list-group-flush">
+                    <a href="" class="btn btn-primary btn-sm btn-block"> Home</a>
+                    <a href="" class="btn btn-primary btn-sm btn-block"> Profile update</a>
+                    <a href="" class="btn btn-primary btn-sm btn-block"> Change Password</a>
+                    <a href="{{ route('logout') }}" class="btn btn-danger btn-sm btn-block"> Logout</a>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <x-jet-welcome />
+                </ul>
+            </div>
+            <div class="col-md-2"></div>
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="text-center">
+                        <span class="text-danger">
+                            SALUT ....
+                        </span>
+                        <strong>
+                            {{ Auth::user()->name }}
+                        </strong>
+                        Bienvenue sur adjemin 
+                    </h3>
+                </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</div>
+@endsection
