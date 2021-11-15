@@ -104,7 +104,7 @@
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              windows.location.href = link;
+              window.location.href = link;
               Swal.fire(
                 'Deleted!',
                 'Your file has been deleted.',

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\FrontEnd\IndexController;
 
 
@@ -11,15 +12,7 @@ use App\Http\Controllers\FrontEnd\IndexController;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
-
-
-
 
 Route::group(['prefix'=>'admin','middleware'=>'admin:admin'],function(){
     Route::get('/login', [AdminController::class,'loginForm']);
@@ -29,11 +22,6 @@ Route::group(['prefix'=>'admin','middleware'=>'admin:admin'],function(){
 |--------------------------------------------------------------------------
 | Admin Dashbord routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register Admin Dashbord routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('admin/dashboard', function () {
@@ -54,11 +42,6 @@ Route::post('admin/change/updatePassword',[AdminProfileController::class, 'admin
 |--------------------------------------------------------------------------
 | USER routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register USER routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 
@@ -77,11 +60,6 @@ Route::get('/', [IndexController::class,'index']);
 |--------------------------------------------------------------------------
 | ADMIN BRAND routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register USER routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 Route::prefix('brand')->group(function () {
@@ -89,4 +67,18 @@ Route::prefix('brand')->group(function () {
     Route::post('store', [BrandController::class,'brandStore'])->name('brand.store');
     Route::get('edit/{id}', [BrandController::class,'brandEdit'])->name('brand.edit');
     Route::post('update', [BrandController::class,'brandUpdate'])->name('brand.update');
+    Route::get('delete/{id}', [BrandController::class,'brandDelate'])->name('brand.delete');
+});
+/*
+|--------------------------------------------------------------------------
+| ADMIN CATEGORY routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('category')->group(function () {
+    Route::get('view', [CategoryController::class,'categoryView'])->name('category.all');
+    Route::post('store', [CategoryController::class,'categoryStore'])->name('category.store');
+    Route::get('edit/{id}', [CategoryController::class,'categoryEdit'])->name('category.edit');
+    Route::post('update', [CategoryController::class,'categoryUpdate'])->name('category.update');
+    Route::get('delete/{id}', [CategoryController::class,'categoryDelate'])->name('category.delete');
 });

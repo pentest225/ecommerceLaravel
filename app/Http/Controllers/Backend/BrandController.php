@@ -57,12 +57,24 @@ class BrandController extends Controller
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(300,300)->save('upload/brand'.$name_gen);
             $save_url = 'upload/brand'.$name_gen;
-            $this->saveBrand($request,$save_url);
+            $this->updateBrand($request,$save_url);
         }else{
-            $this->saveBrand($request,null);
+            $this->updateBrand($request,null);
         }
         $notification = array(
-            "message"=>"Brand ipdated succefully",
+            "message"=>"Brand updated succefully",
+            "alert-type"=>"info"
+        );
+        return redirect()->back()->with($notification);
+    }
+
+    public function brandDelate($id){
+
+        $brand = Brand::findOrFail($id);
+        unlink($brand->brand_image);
+        Brand::findOrFail($id)->delete();
+        $notification = array(
+            "message"=>"Brand deleted succefully",
             "alert-type"=>"info"
         );
         return redirect()->back()->with($notification);
@@ -76,9 +88,8 @@ class BrandController extends Controller
 |--------------------------------------------------------------------------
 | SAVE BRAN FUNCTION 
 |--------------------------------------------------------------------------
-|
 */
-    private function saveBrand($request,?string $saveFile){
+    private function updateBrand($request,?string $saveFile){
         return is_null($saveFile)? Brand::findOrFail($request->brand_id)->update([
             'brand_name_fr'=>$request->brand_name_fr,
             'brand_name_en'=>$request->brand_name_en,
