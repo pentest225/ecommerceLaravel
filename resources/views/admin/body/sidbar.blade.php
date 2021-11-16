@@ -12,8 +12,8 @@
 				 <a href="index.html">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">					 	
-						  <img src="{{ asset('back_end/images/logo-dark.png') }}" alt="">
-						  <h3><b>Adjemin</b> Admin </h3>
+						  <img src="{{ asset('back_end/images/app_logo.png') }}" alt="" style="height: 3%;width:13%;">
+						  <h3><b>Adjemin</b>  </h3>
 					 </div>
 				</a>
 			</div>
@@ -53,20 +53,20 @@
           <ul class="treeview-menu">
             <li class="{{ ($route == 'category.all')?'active':'' }}"><a href="{{ route('category.all') }}"><i class="ti-more"></i>All Categories</a></li>
             <li class="{{ ($route == 'sub.category.all')?'active':'' }}"><a href="{{ route('sub.category.all') }}"><i class="ti-more"></i>All SubCategories</a></li>
-            <li class="{{ ($route == 'sub.category.all')?'active':'' }}"><a href="{{ route('sub.sub_category.all') }}"><i class="ti-more"></i>All sub-->SubCategories</a></li>
+            <li class="{{ ($route == 'sub.sub_category.all')?'active':'' }}"><a href="{{ route('sub.sub_category.all') }}"><i class="ti-more"></i>All sub-->SubCategories</a></li>
           </ul>
         </li>
 		
-        <li class="treeview">
+        <li class="treeview {{ ($prefix == '/product')?'active':'' }}">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Pages</span>
+            <span>Product</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="ti-more"></i>Profile</a></li>
+            <li {{ ($route == 'product.create')?'active':'' }}><a href="{{ route('product.create') }}"><i class="ti-more"></i>Add Product</a></li>
             <li><a href="invoice.html"><i class="ti-more"></i>Invoice</a></li>
             <li><a href="gallery.html"><i class="ti-more"></i>Gallery</a></li>
             <li><a href="faq.html"><i class="ti-more"></i>FAQs</a></li>

@@ -90,7 +90,7 @@
                     <div class="controls">
                         <select name="subcategory_id" id="select" required="" class="form-control" aria-invalid="false">
                             <option value="" selected>Select Your sub Category</option>
-                                <option :value='item.id' v-for="item in subCatList" :key='item.id'>{% item.sub_category_name_fr %}</option>
+                            <option :value='item.id' v-for="item in subCatList" :key='item.id'>{% item.sub_category_name_fr %}</option>
                         </select>
                     <div class="help-block"></div></div>
                 </div>
@@ -153,7 +153,7 @@
   methods: {
     getSuBcat(event){
       let catId = event.target.value;
-      let url = "http://127.0.0.1:8000/category/sub/sub/cat/json/"+catId
+      let url = "http://127.0.0.1:8000/category/sub/cat/json/"+catId
       axios.get(url)
       .then(response => {
         this.subCatList = response.data;

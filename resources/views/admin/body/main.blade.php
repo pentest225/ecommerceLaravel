@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{ asset('back_end/images/favicon.ico') }}">
+    <link rel="icon" href="{{ asset('back_end/images/app_logo.png') }}">
 
-    <title>Sunny Admin - Dashboard</title>
+    <title>Adjemin Admin - Dashboard</title>
     
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('back_end/css/vendors_css.css') }}">
@@ -54,6 +54,10 @@
 	<!-- Sunny Admin App -->
 	<script src="{{ asset('back_end/js/template.js')}}"></script>
 	<script src="{{ asset('back_end/js/pages/dashboard.js')}}"></script>
+  <script src="{{ asset('../assets/vendor_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.js')}}"></script>
+  <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js')}}"></script>
+  <script src="{{ asset('back_end/js/pages/editor.js') }}"></script>
+
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>

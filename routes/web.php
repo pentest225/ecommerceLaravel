@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
+use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\FrontEnd\IndexController;
 
 
@@ -99,10 +100,24 @@ Route::prefix('category')->group(function () {
     | ADMIN SUB_SUBCATEGORY routes
     |--------------------------------------------------------------------------
     */
-    Route::get('sub/sub/cat/json/{category_id}',[SubSubCategoryController::class,'getSubCategoryByCategoryId']);
+    Route::get('sub/cat/json/{category_id}',[SubSubCategoryController::class,'getSubCategoryByCategoryId']);
+    Route::get('sub/sub/cat/json/{subcategory_id}',[SubSubCategoryController::class,'getSubSubCategoryBySubCategoryId']);
     Route::get('sub/sub/cat/view', [SubSubCategoryController::class,'subSubCategoryView'])->name('sub.sub_category.all');
     Route::post('sub/sub/store', [SubSubCategoryController::class,'subSubCategoryStore'])->name('sub.sub_category.store');
     Route::get('sub/sub/edit/{id}', [SubSubCategoryController::class,'subCategoryEdit'])->name('sub.sub_category.edit');
     Route::post('sub/sub/update', [SubSubCategoryController::class,'subCategoryUpdate'])->name('sub.sub_category.update');
     Route::get('sub/sub/delete/{id}', [SubSubCategoryController::class,'subCategoryDelate'])->name('sub.sub_category.delete');
+});
+
+
+/*
+|--------------------------------------------------------------------------
+| ADMIN PRODUCT routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('product')->group(function () {
+    Route::get('create', [ProductController::class,'create'])->name('product.create');
+
+    
 });

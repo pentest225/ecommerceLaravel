@@ -94,4 +94,8 @@ class SubSubCategoryController extends Controller
         $subCatList = SubCategory::where('category_id',$categoryId)->get();
         return json_encode($subCatList);
     }
+    public function getSubSubCategoryBySubCategoryId($subCategoryId){
+        $subsubCatList = SubSubCategory::where('subcategory_id',$subCategoryId)->get();
+        return json_encode($subsubCatList);
+    }
 }
